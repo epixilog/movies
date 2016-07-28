@@ -1,5 +1,4 @@
-# src/Ens/JobeetBundle/Resources/config/doctrine/Job.orm.yml
-Epixilog\MoviesBundle\Entity\Film:
+epixilog\moviesBundle\Entity\Film:
   type: entity
   table: film
   id:
@@ -21,5 +20,5 @@ Epixilog\MoviesBundle\Entity\Film:
       targetEntity: CategoryFilm
       mappedBy: film
   lifecycleCallbacks:
-    prePersist: [ setUpdatedAtValue, setCreatedAtValue ]
+    prePersist: [ setCreatedAtValue ]
     preUpdate: [ setUpdatedAtValue ]

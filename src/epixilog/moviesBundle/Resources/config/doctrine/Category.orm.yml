@@ -1,5 +1,4 @@
-# src/Ens/JobeetBundle/Resources/config/doctrine/Category.orm.yml
-Epixilog\MoviesBundle\Entity\Category:
+epixilog\moviesBundle\Entity\Category:
   type: entity
   table: category
   id:

@@ -1,24 +1,24 @@
-# src/Ens/JobeetBundle/Resources/config/doctrine/CategoryAffiliate.orm.yml
-Epixilog\MoviesBundle\Entity\CategoryFilm:
+epixilog\moviesBundle\Entity\CategoryFilm:
   type: entity
   table: category_film
   id:
     id:
       type: integer
       generator: { strategy: AUTO }
+  fields:
     pertinence:
       type: float
       nullable: true
   manyToOne:
     category:
       targetEntity: Category
-      inversedBy: category_films
+      inversedBy: Category_films
       joinColumn:
         name: category_id
         referencedColumnName: id
     affiliate:
       targetEntity: Film
-      inversedBy: category_films
+      inversedBy: Category_films
       joinColumn:
         name: film_id
         referencedColumnName: id
