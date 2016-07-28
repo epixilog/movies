@@ -1,0 +1,4 @@
+services:
+#    epixilogmovies.example:
+#        class: epixilog\moviesBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

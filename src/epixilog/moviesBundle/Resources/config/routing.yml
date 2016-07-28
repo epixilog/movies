@@ -1,0 +1,3 @@
+epixilogmovies_homepage:
+    path:     /
+    defaults: { _controller: epixilogmoviesBundle:Default:index }
