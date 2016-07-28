@@ -1,0 +1,25 @@
+# src/Ens/JobeetBundle/Resources/config/doctrine/Job.orm.yml
+Epixilog\MoviesBundle\Entity\Film:
+  type: entity
+  table: film
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      type: string
+      length: 255
+    description:
+      type: text
+    created_at:
+      type: datetime
+    updated_at:
+      type: datetime
+  oneToMany:
+    category_films:
+      targetEntity: CategoryFilm
+      mappedBy: film
+  lifecycleCallbacks:
+    prePersist: [ setUpdatedAtValue, setCreatedAtValue ]
+    preUpdate: [ setUpdatedAtValue ]
