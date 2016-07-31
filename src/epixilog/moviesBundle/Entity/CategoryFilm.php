@@ -25,8 +25,7 @@ class CategoryFilm
     /**
      * @var \epixilog\moviesBundle\Entity\Film
      */
-    private $affiliate;
-
+    private $film;
 
     /**
      * Get id
@@ -87,26 +86,26 @@ class CategoryFilm
     }
 
     /**
-     * Set affiliate
+     * Set film
      *
-     * @param \epixilog\moviesBundle\Entity\Film $affiliate
+     * @param \epixilog\moviesBundle\Entity\Film $film
      *
      * @return CategoryFilm
      */
-    public function setAffiliate(\epixilog\moviesBundle\Entity\Film $affiliate = null)
+    public function setFilm(\epixilog\moviesBundle\Entity\Film $film = null)
     {
-        $this->affiliate = $affiliate;
+        $this->film = $film;
 
         return $this;
     }
 
     /**
-     * Get affiliate
+     * Get film
      *
      * @return \epixilog\moviesBundle\Entity\Film
      */
-    public function getAffiliate()
+    public function getFilm()
     {
-        return $this->affiliate;
+        return $this->film;
     }
 }

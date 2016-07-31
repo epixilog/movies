@@ -1,0 +1,35 @@
+{% extends 'epixilogmoviesBundle:Layouts:base.html.twig' %}
+{% use 'epixilogmoviesBundle:Layouts:sidebar.html.twig' %}
+
+{% block content %}
+
+<h3>{{ category.label }}</h3>
+
+{% if films != null %}
+    {% for film in films %}
+
+      <div class="block">
+                    <h2>{{film.title}}</h2>
+                    <div class="tags-list">
+                      {% for cf in film.categoryfilms %}
+                          <span class="badge">{{cf.category.label}}</span>
+                      {% endfor %}
+                    </div>
+                    <div class="illustration">
+                        <span class="fa fa-ban"></span>
+                    </div>
+                    <div class="description">
+                        {{film.description}}
+                    </div>
+                    <div class="read-more">
+                        <a class="btn btn-primary btn-small">Voir</a>
+                    </div>
+        </div>
+
+    {% endfor %}
+{% else %}
+  <h4>No movies under this Category</h4>
+{% endif %}
+
+
+{% endblock %}

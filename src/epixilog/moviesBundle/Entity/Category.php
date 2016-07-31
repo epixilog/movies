@@ -2,8 +2,12 @@
 
 namespace epixilog\moviesBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use epixilog\moviesBundle\Utils\Slug as Slugs;
+
 /**
  * Category
+ * @ORM\Entity(repositoryClass="epixilog\moviesBundle\Repository\Category")
  */
 class Category
 {
@@ -21,6 +25,11 @@ class Category
      * @var string
      */
     private $description;
+
+    /**
+     * @var string
+     */
+    private $slug;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -126,4 +135,25 @@ class Category
     {
         return $this->category_films;
     }
+
+    /**
+     * Set slug
+     *
+     * @return Category
+     */
+    public function setSlug()
+    {
+        $this->slug = Slugs::slugify($this->getLabel());
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return Slugs::slugify($this->getLabel());
+    }
+
 }

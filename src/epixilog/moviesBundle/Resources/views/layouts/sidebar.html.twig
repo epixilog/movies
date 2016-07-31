@@ -1,0 +1,20 @@
+{% block sidebar %}
+		<ul class="nav nav-list">
+              <li class="nav-header">Tri par genre</li>
+              <li {% if active_category is not defined %} class="active"{% endif %}>	
+              		<a href="{{path('epixilogmovies_homepage')}}">
+              			Tous <span class="badge badge-info">{{ films_count }}</span>
+              		</a>
+              </li>
+
+              
+
+         	  {% for category in categories %}
+         	  		<li {% if active_category is defined and active_category == category.id %} class="active"{% endif %}>
+         	  			<a href="{{ path('category_films', { 'id': category.id , 'slug' : category.slug }) }}">
+         	  				{{ category.label }} <span class="badge badge-info">{{ category.ccf }}</span>
+         	  			</a>
+         	  		</li>
+         	  {% endfor %}
+        </ul>
+{% endblock %}

@@ -1,6 +1,7 @@
 epixilog\moviesBundle\Entity\Film:
   type: entity
   table: film
+  repositoryClass: epixilog\moviesBundle\Repository\FilmRepository
   id:
     id:
       type: integer
@@ -11,6 +12,9 @@ epixilog\moviesBundle\Entity\Film:
       length: 255
     description:
       type: text
+    slug:
+      type: string
+      length: 355
     created_at:
       type: datetime
     updated_at:
@@ -21,4 +25,4 @@ epixilog\moviesBundle\Entity\Film:
       mappedBy: film
   lifecycleCallbacks:
     prePersist: [ setCreatedAtValue ]
-    preUpdate: [ setUpdatedAtValue ]
+    preUpdate: [ setUpdatedAtValue, setSlugValue ]

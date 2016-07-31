@@ -1,0 +1,24 @@
+film_index:
+    path:     /
+    defaults: { _controller: "epixilogmoviesBundle:Film:index" }
+    methods:  GET
+
+film_show:
+    path:     /show/{id}-{slug}
+    defaults: { _controller: "epixilogmoviesBundle:Film:show" }
+    methods:  GET
+
+film_new:
+    path:     /new
+    defaults: { _controller: "epixilogmoviesBundle:Film:new" }
+    methods:  [GET, POST]
+
+film_edit:
+    path:     /edit/{id}
+    defaults: { _controller: "epixilogmoviesBundle:Film:edit" }
+    methods:  [GET, POST]
+
+film_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "epixilogmoviesBundle:Film:delete" }
+    methods:  DELETE

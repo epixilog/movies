@@ -2,6 +2,9 @@
 
 namespace epixilog\moviesBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+use epixilog\moviesBundle\Utils\Slug as Slugs;
+
 /**
  * Film
  */
@@ -36,6 +39,11 @@ class Film
      * @var \Doctrine\Common\Collections\Collection
      */
     private $category_films;
+
+    /**
+     * @var string
+     */
+    private $slug;
 
     /**
      * Constructor
@@ -190,7 +198,7 @@ class Film
      */
     public function setCreatedAtValue()
     {
-        // Add your code here
+        $this->updated_at = $this->created_at = new \DateTime();
     }
 
     /**
@@ -198,6 +206,39 @@ class Film
      */
     public function setUpdatedAtValue()
     {
-        // Add your code here
+        $this->updated_at = new \DateTime();
+    }
+    
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return Film
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setSlugValue()
+    {
+        $this->setSlug( Slugs::slugify($this->getTitle()) );
     }
 }

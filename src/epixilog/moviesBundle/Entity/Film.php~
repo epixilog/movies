@@ -2,6 +2,8 @@
 
 namespace epixilog\moviesBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Film
  */
@@ -190,7 +192,14 @@ class Film
      */
     public function setCreatedAtValue()
     {
-        // Add your code here
+        $this->updated_at = $this->created_at = new \DateTime();
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function setUpdatedAtValue()
+    {
+        $this->updated_at = new \DateTime();
     }
 }
-

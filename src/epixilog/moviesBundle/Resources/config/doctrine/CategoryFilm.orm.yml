@@ -12,13 +12,13 @@ epixilog\moviesBundle\Entity\CategoryFilm:
   manyToOne:
     category:
       targetEntity: Category
-      inversedBy: Category_films
+      inversedBy: category_films
       joinColumn:
         name: category_id
         referencedColumnName: id
-    affiliate:
+    film:
       targetEntity: Film
-      inversedBy: Category_films
+      inversedBy: category_films
       joinColumn:
         name: film_id
         referencedColumnName: id

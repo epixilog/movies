@@ -1,22 +1,22 @@
-{% extends 'epixilogmoviesBundle:Layouts:base.html.twig' %}
-{% use 'epixilogmoviesBundle:Layouts:sidebar.html.twig' %}
+{% extends 'epixilog/moviesBundle/views/layouts/home.html.twig' %}
+{% use 'epixilog/moviesBundle/views/layouts/sidebar.html.twig' %}
 
 {% block content %}
 
-{% for film in films %}
+{% for film : films %}
 
-  <div class="block">
+	<div class="block">
                 <h2>{{film.title}}</h2>
                 <div class="tags-list">
-                  {% for cf in film.categoryfilms %}
-                      <span class="badge">{{cf.category.label}}</span>
-                  {% endfor %}
+                	{% for category : film.category_film %}
+                			<span class="badge">{{category}}</span>
+                	{% endfor %}
                 </div>
                 <div class="illustration">
                     <span class="fa fa-ban"></span>
                 </div>
                 <div class="description">
-                    {{film.description}}
+                    {{film.descirption}}
                 </div>
                 <div class="read-more">
                     <a class="btn btn-primary btn-small">Voir</a>

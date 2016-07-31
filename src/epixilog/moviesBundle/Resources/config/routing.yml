@@ -1,3 +1,11 @@
+epixilogmovies_film:
+        resource: "@epixilogmoviesBundle/Resources/config/routing/film.yml"
+        prefix:   /film
+        
+epixilogmovies_category:
+    resource: "@epixilogmoviesBundle/Resources/config/routing/category.yml"
+    prefix:   /category
+
 epixilogmovies_homepage:
     path:     /
     defaults: { _controller: epixilogmoviesBundle:Default:index }

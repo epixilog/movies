@@ -1,6 +1,7 @@
 epixilog\moviesBundle\Entity\Category:
   type: entity
   table: category
+  repositoryClass: epixilog\moviesBundle\Repository\CategoryRepository
   id:
     id:
       type: integer
