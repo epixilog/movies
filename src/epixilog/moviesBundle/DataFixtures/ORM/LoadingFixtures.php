@@ -26,51 +26,57 @@ class LoadingFixtures implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
-    	$labels = array(
-    						'Horror',
-    						'Adventure',
-    						'Sport',
-    						'Science Fiction'
-    					);
-
-    	foreach($labels as $label){
-    		$Category = new Category();
-    		$Category->setLabel($label);
-    		$Category->setDescription($label.' movies');
-
-    		$manager->persist($Category);
-    	}
-
-    	$Action = new Category();
-    	$Action->setLabel('Action');
-    	$Action->setDescription('Action movies');
-    	
-		$Police = new Category();
-    	$Police->setLabel('Police');
-    	$Police->setDescription('Police movies');
-    	
-        $manager->persist($Action);
-        $manager->persist($Police);
-
-    	// On crée le film Matrix !
-        $Film = new Film();
-        $Film->setTitle("Matrix");
-        $Film->setDescription("Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?");
-
-        $manager->persist($Film);
-
-        $cf = new CategoryFilm();
-    	$cf->setCategory($Action);
-    	$cf->setFilm($Film);
-
-    	$manager->persist($cf);
-
-    	$cf = new CategoryFilm();
-    	$cf->setCategory($Police);
-    	$cf->setFilm($Film);
-
-    	$manager->persist($cf);
-
+    
+      $data =  array(
+                      'film' => array(
+                                        array(
+                                              "title"=> "Matrix", 
+                                              "description" => "Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?")
+                      
+                                ),
+                      'category' => array(
+                                      array('label' => 'Action', 'description' => 'Action movies'),
+                                      array('label' => 'Police', 'description' => 'Police movies'),
+                                      array('label' => 'Sport', 'description' => 'Sport movies'),
+                                      array('label' => 'Science Fiction', 'description' => 'Science Fiction movies')
+                                  ),
+                      'categoryfilm' => array(
+                                                array( "film" => 0, "category" => 0 ),
+                                                array( "film" => 0, "category" => 1 )
+                                      )      
+                );
+                
+      $categories = array();
+      $films      = array();
+      
+      foreach($data['film'] as $film){
+             $Film = new Film();
+             $Film->setTitle($film['title']);
+             $Film->setDescription($film['description']);
+             
+             $manager->persist($Film);
+             array_push($films, $Film);
+      }
+      
+      foreach($data['category'] as $category){
+             $Category = new Category();
+             $Category->setLabel($category['label']);
+             $Category->setDescription($category['description']);
+             
+             $manager->persist($Category);
+             array_push($categories, $Category);
+      }
+      
+      foreach($data['categoryfilm'] as $cf)
+      {
+              $Cf = new CategoryFilm();
+            	$Cf->setCategory($categories[$cf["category"]]);
+            	$Cf->setFilm($films[$cf["film"]]);
+      
+          	  $manager->persist($Cf);
+      }
+       
    		$manager->flush();
 	}
+  
 }

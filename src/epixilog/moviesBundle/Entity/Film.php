@@ -236,6 +236,7 @@ class Film
     }
     /**
      * @ORM\PreUpdate
+     * @ORM\PrePersist
      */
     public function setSlugValue()
     {

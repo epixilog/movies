@@ -1,3 +1,7 @@
+epixilogpages:
+    resource: "@epixilogpagesBundle/Resources/config/routing.yml"
+    prefix:   /
+
 epixilogmovies:
     resource: "@epixilogmoviesBundle/Resources/config/routing.yml"
     prefix:   /

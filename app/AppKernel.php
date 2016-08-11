@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new epixilog\moviesBundle\epixilogmoviesBundle(),
+            new epixilog\pagesBundle\epixilogpagesBundle(),
         ];
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

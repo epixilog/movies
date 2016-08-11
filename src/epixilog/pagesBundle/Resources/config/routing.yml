@@ -1,0 +1,3 @@
+epixilogpages_display:
+    path:     /{page}
+    defaults: { _controller: epixilogpagesBundle:Default:index, page: "index" }
