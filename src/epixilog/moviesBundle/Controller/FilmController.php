@@ -24,7 +24,7 @@ class FilmController extends Controller
 
         $films = $em->getRepository('epixilogmoviesBundle:Film')->findAll();
 
-        return $this->render('film/index.html.twig', array(
+        return $this->render('epixilogmoviesBundle:Film:index.html.twig', array(
             'films' => $films,
         ));
     }

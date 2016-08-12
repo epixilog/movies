@@ -1,0 +1,28 @@
+{% for film in films %}
+          <div class="content-grid{% if loop.index % 4 == 0 %} last-grid{% endif %}">
+						<a class="play-icon popup-with-zoom-anim" href="#small-dialog"><img src="{{ asset('bundles/cinema/images/gridallbum4.jpg') }}" title="{{film.title}}" /></a>
+						<h2>{{film.title}}</h2>
+            <h3>{{film.description | truncate(100)}}</h3>
+						<ul>
+							<li><a href="#"><img src="{{ asset('bundles/cinema/images/likes.png') }}" title="like" /></a></li>
+							<li><a href="#"><img src="{{ asset('bundles/cinema/images/views.png') }}" title="view" /></a></li>
+							<li><a href="#"><img src="{{ asset('bundles/cinema/images/link.png') }}" title="link" /></a></li>
+						</ul>
+						<a class="button play-icon popup-with-zoom-anim" href="#small-dialog">Watch now</a>
+					</div>
+{% endfor %}
+
+<div class="clearfix"> </div>
+					<!---start-pagenation----->
+					<div class="pagenation">
+						<ul>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">Next</a></li>
+						</ul>
+					</div>
+					<div class="clearfix"> </div>
+					<!---End-pagenation----->

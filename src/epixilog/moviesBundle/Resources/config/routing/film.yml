@@ -1,11 +1,11 @@
 film_index:
-    path:     /
+    path:     /all
     defaults: { _controller: "epixilogmoviesBundle:Film:index" }
     methods:  GET
 
 film_show:
     path:     /show/{id}-{slug}
-    defaults: { _controller: "epixilogmoviesBundle:Film:show" }
+    defaults: { _controller: "epixilogmoviesBundle:Film:show", slug :"" }
     methods:  GET
 
 film_new:

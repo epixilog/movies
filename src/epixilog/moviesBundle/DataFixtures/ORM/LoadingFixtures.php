@@ -24,28 +24,57 @@ use epixilog\moviesBundle\Entity\CategoryFilm;
  */
 class LoadingFixtures implements FixtureInterface
 {
+    public function read($file, $delimit = ";"){
+               
+        if($file != NULL)
+        {         
+                  $return = array();
+                  $fields = array();
+                  $i = 0;
+                 
+                 if (($handle = fopen(__DIR__.'../CSV/'.$file.'.csv', "r")) !== FALSE) 
+                 {
+                    while (($data = fgetcsv($handle, 1000, $delimit)) !== FALSE) 
+                    {  
+                        if($i == 0)  // First row
+                        {
+                              $i++;
+                              foreach($data as $field)
+                              {
+                                  array_push($fields, $field);
+                              }
+                        } 
+                          
+                        else     // Data
+                        {
+                              $datas = array();
+                              foreach($fields as $k => $v)
+                              {
+                                  $datas[$v] = $data[$k];
+                              }
+                              array_push( $return, $datas );
+                        }
+                    }
+                    
+                    fclose($handle);
+                    return $return;
+                }
+        }
+        else
+        {
+            return "Nothing to read";
+        }
+    }
+
+
     public function load(ObjectManager $manager)
-    {
-    
-      $data =  array(
-                      'film' => array(
-                                        array(
-                                              "title"=> "Matrix", 
-                                              "description" => "Un super film ou neo va se révéler être l'élu. Sa mission sera de sauver l'humanité de la matrix. Mais ... Qu'est ce que la matrice ?")
-                      
-                                ),
-                      'category' => array(
-                                      array('label' => 'Action', 'description' => 'Action movies'),
-                                      array('label' => 'Police', 'description' => 'Police movies'),
-                                      array('label' => 'Sport', 'description' => 'Sport movies'),
-                                      array('label' => 'Science Fiction', 'description' => 'Science Fiction movies')
-                                  ),
-                      'categoryfilm' => array(
-                                                array( "film" => 0, "category" => 0 ),
-                                                array( "film" => 0, "category" => 1 )
-                                      )      
-                );
-                
+    {    
+         
+      $data = array(
+                      'film' => $this->read('film'),
+                      'category' => $this->read('category'),
+                      'categoryfilm' => $this->read('categoryfilm')
+              );       
       $categories = array();
       $films      = array();
       
